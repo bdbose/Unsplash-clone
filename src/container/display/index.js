@@ -64,7 +64,7 @@ const Display = (props) => {
 	const [images, setImages] = React.useState([]);
 	const [loaded, setIsLoaded] = React.useState(false);
 	const [page, setpage] = useState(1);
-	const col = useState(props.match.params.id || 1580860);
+	const col = props.match.params.id || 1580860;
 	const ClientId = 'YaWIUSH8VteV3mFPmKskfQnNLTTAMsHNByEuHa7uZU8';
 	useEffect(() => {
 		getData(col);
