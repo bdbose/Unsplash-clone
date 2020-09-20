@@ -65,7 +65,7 @@ const Display = (props) => {
 	const [loaded, setIsLoaded] = React.useState(false);
 	const [page, setpage] = useState(1);
 	const col = props.match.params.id || 1580860;
-	const ClientId = 'YaWIUSH8VteV3mFPmKskfQnNLTTAMsHNByEuHa7uZU8';
+	const ClientId = 'zYer1fRjlYNPTvP-5ulNpALcZTnAHUUhXmXDMD1us78';
 	useEffect(() => {
 		getData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
