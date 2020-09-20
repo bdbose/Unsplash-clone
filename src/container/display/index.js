@@ -68,6 +68,7 @@ const Display = (props) => {
 	const ClientId = 'YaWIUSH8VteV3mFPmKskfQnNLTTAMsHNByEuHa7uZU8';
 	useEffect(() => {
 		getData(col);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	const getData = async () => {
 		Axios.get(
