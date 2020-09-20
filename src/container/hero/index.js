@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Search from '../../assets/search.svg';
 const Hero = () => {
