@@ -78,7 +78,10 @@ const Display = (props) => {
 				setImages([...images, ...res.data]);
 				setIsLoaded(true);
 			})
-			.catch((err) => alert('Rate Limit Exceeded Please Try Later!'));
+			.catch((err) => {
+				alert('Rate Limit Exceeded Please Try Later!');
+				window.location.href = '/';
+			});
 	};
 	return (
 		<DisplayWrapper>
@@ -102,8 +105,12 @@ const Display = (props) => {
 					loader={
 						<Loading>
 							<img
-								src={'https://loading.io/mod/spinner/spinner/thumb.png'}
+								src={
+									'https://www.flaticon.com/svg/static/icons/svg/189/189792.svg'
+								}
 								alt='loading'
+								width='50px'
+								height='auto'
 							/>
 						</Loading>
 					}>
