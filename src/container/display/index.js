@@ -86,7 +86,6 @@ const Display = (props) => {
 				<div>
 					<a href={`/new/${139386}`}>New</a>
 				</div>
-				<div>Following</div>
 			</Nav>
 			<Show>
 				<InfiniteScroll
