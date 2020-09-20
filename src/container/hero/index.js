@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Search from '../../assets/search.svg';
 const Hero = () => {
@@ -28,7 +28,7 @@ const Hero = () => {
 			font-weight: 300;
 		}
 	`;
-	const TextInput = styled.div`
+	const TextInput = styled.form`
 		background: white;
 		border-radius: 3px;
 		display: flex;
@@ -59,9 +59,20 @@ const Hero = () => {
 				<span>
 					Gifted by the world's most generous community of photographers.
 				</span>
-				<TextInput>
+				<TextInput
+					onSubmit={(e) => {
+						e.preventDefault();
+						window.location.href = `/search/${
+							document.getElementById('searh').value
+						}`;
+					}}>
 					<img src={Search} width='25px' alt='search' />
-					<input type='text' placeholder='Search free high-resolution photos' />
+					<input
+						id='searh'
+						type='text'
+						placeholder='Search free high-resolution photos'
+						required
+					/>
 					<button>Search</button>
 				</TextInput>
 				<h5>Trending searches: business, computer, nature, love, house</h5>

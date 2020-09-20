@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
-const Display = (props) => {
+import Axios from 'axios';
+const Search = (props) => {
 	const DisplayWrapper = styled.div`
 		background: white;
 	`;
@@ -64,7 +64,7 @@ const Display = (props) => {
 	const [images, setImages] = React.useState([]);
 	const [loaded, setIsLoaded] = React.useState(false);
 	const [page, setpage] = useState(1);
-	const col = props.match.params.id || 1580860;
+	const search = props.match.params.id;
 	const ClientId = 'YaWIUSH8VteV3mFPmKskfQnNLTTAMsHNByEuHa7uZU8';
 	useEffect(() => {
 		getData();
@@ -72,10 +72,11 @@ const Display = (props) => {
 	}, []);
 	const getData = async () => {
 		Axios.get(
-			`https://api.unsplash.com/collections/${col}/photos/?client_id=${ClientId}&page=${page}`
+			`https://api.unsplash.com/search/collections?client_id=${ClientId}&page=${page}&query=${search}`
 		)
 			.then((res) => {
-				setImages([...images, ...res.data]);
+				console.log(res);
+				setImages([...images, res.data]);
 				setIsLoaded(true);
 			})
 			.catch((err) => alert('Rate Limit Exceeded Please Try Later!'));
@@ -89,6 +90,7 @@ const Display = (props) => {
 				<div>
 					<a href={`/new/${139386}`}>New</a>
 				</div>
+				<div>{search}</div>
 			</Nav>
 			<Show>
 				<InfiniteScroll
@@ -111,7 +113,10 @@ const Display = (props) => {
 						{loaded
 							? images.map((image, index) => (
 									<ImgWrapper key={index}>
-										<img src={image.urls.regular} alt={image.urls.regular} />
+										<img
+											src={image.results[0].preview_photos[0].urls.regular}
+											alt={image.results[0].preview_photos[0].urls.regular}
+										/>
 									</ImgWrapper>
 							  ))
 							: ''}
@@ -121,4 +126,4 @@ const Display = (props) => {
 		</DisplayWrapper>
 	);
 };
-export default Display;
+export default Search;
